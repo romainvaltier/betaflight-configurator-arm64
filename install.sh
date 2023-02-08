@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-"wget -q -c https://github.com/betaflight/betaflight-configurator/releases/download/10.9.0/betaflight-configurator_10.9.0_linux64-portable.zip -O betaflight-configurator_linux64-portable.zip
+wget -q -c https://github.com/betaflight/betaflight-configurator/releases/download/10.9.0/betaflight-configurator_10.9.0_linux64-portable.zip -O betaflight-configurator_linux64-portable.zip
 
 unzip -qq betaflight-configurator_linux64-portable.zip
 
@@ -14,9 +14,6 @@ tar -xvf ./usr/docker/dist/nwjs-chromium-ffmpeg-branding/nwjs-v0.60.1-linux-arm6
 cd nwjs-v0.60.1-linux-arm64/
 cp -R * ../Betaflight-Configurator/
 
-sudo rm -R /opt/betaflight/betaflight-configurator/
-sudo mkdir /opt/betaflight/betaflight-configurator/
-"
 LINUX_INSTALL_DIR=/opt/betaflight
 metadata_name=betaflight-configurator
 rm -rf ${LINUX_INSTALL_DIR}/${metadata_name}
