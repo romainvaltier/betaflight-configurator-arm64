@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
+# Set variables
 bfVersion=10.9.0
 nwArmVersion=nw60-arm64_2022-01-08
 LINUX_INSTALL_DIR=/opt/betaflight
 metadata_name=betaflight-configurator
 
+# Get betaflight-configurator linux64 portable edition
 wget -c https://github.com/betaflight/betaflight-configurator/releases/download/${bfVersion}/betaflight-configurator_${bfVersion}_linux64-portable.zip
 unzip betaflight-configurator_${bfVersion}_linux64-portable.zip
 rm betaflight-configurator_${bfVersion}_linux64-portable.zip
 
+# Get nw.js-armv7-binaries and move it to linux64 portable edition folder
 wget https://github.com/LeonardLaszlo/nw.js-armv7-binaries/releases/download/${nwArmVersion}/${nwArmVersion}.tar.gz
 tar -xvf ${nwArmVersion}.tar.gz usr/docker/dist/nwjs-chromium-ffmpeg-branding/nwjs-v0.60.1-linux-arm64.tar.gz
 rm ${nwArmVersion}.tar.gz
@@ -17,6 +20,7 @@ rm -R ./usr
 cp -R ./nwjs-v0.60.1-linux-arm64/* ./Betaflight\ Configurator/
 rm -R ./nwjs-v0.60.1-linux-arm64/
 
+# Deploy the application to /opt/betaflight/betaflight-configurator and set rights
 rm -rf ${LINUX_INSTALL_DIR}/${metadata_name}
 mkdir -p ${LINUX_INSTALL_DIR}/${metadata_name}
 cp -R ./Betaflight\ Configurator/* ${LINUX_INSTALL_DIR}/${metadata_name}
